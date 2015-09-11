@@ -1,10 +1,10 @@
 FROM ruby:2.2
 MAINTAINER Peter Etelej <peter@etelej.com>
 
-VOLUME ["../etelej.github.io:/code","./jekyll-container/vol:/vol"]
-WORKDIR /
+COPY ./vol /vol
+
 RUN gem install bundler && \ 
-	bundle install /vol
+	bundle install --gemfile /vol/Gemfile
 
 CMD ["/bin/bash"]
 

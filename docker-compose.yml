@@ -1,0 +1,4 @@
+jek1:
+    build: .
+    volumes:
+        - ../etelej.github.io:/code
