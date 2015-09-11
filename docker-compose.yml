@@ -2,3 +2,5 @@ jek1:
     build: .
     volumes:
         - ../etelej.github.io:/code
+    ports:
+        - "4000:4000"
