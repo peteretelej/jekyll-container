@@ -7,7 +7,7 @@ RUN apt-get update && \
 	apt-get install nodejs -y && \
 	gem install bundler && \ 
 	mkdir -p /etc/jekyll && \
-	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"' > /etc/jekyll/Gemfile
+	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"' > /etc/jekyll/Gemfile && \
 	bundle install --clean --gemfile /etc/jekyll/Gemfile
 
 RUN apt-get clean && \
