@@ -1,6 +1,6 @@
 # Jekyll Docker Container
 
-A [jekyll]("http://jekyllrb.com") docker container for [Github Pages]("https://pages.github.com")
+An optimized [jekyll]("http://jekyllrb.com") docker image for building containers for managing [Github Pages]("https://pages.github.com")
 
 
 ## Usage
