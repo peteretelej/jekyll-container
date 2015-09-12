@@ -1,8 +1,8 @@
 FROM ruby:latest
 MAINTAINER Peter Etelej <peter@etelej.com>
 
-RUN apt-get update && \
-	apt-get install nodejs -y && \
+RUN apt-get -qq update && \
+	apt-get -qq install nodejs -y && \
 	gem install bundler
 
 RUN mkdir -p /etc/jekyll && \
