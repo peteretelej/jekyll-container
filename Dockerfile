@@ -1,10 +1,10 @@
-FROM ruby:2.2
+FROM ruby:latest
 MAINTAINER Peter Etelej <peter@etelej.com>
 
 EXPOSE 4000
 
 RUN apt-get update && \
-	apt-get install nodejs && \
+	apt-get install nodejs -y && \
 	gem install bundler && \ 
 	mkdir -p /etc/jekyll && \
 	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"' > /etc/jekyll/Gemfile
