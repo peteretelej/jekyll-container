@@ -31,6 +31,8 @@ docker-compose run --rm jekyll/container
 Running a **container** from the image
    - **Map** your githubpages to a volume in the localcontainer. (Note: Your Gemfile and Gemfile.lock should be included in the files). Mounting as *read-only will not work* as the webserver will require to rebuild files to the directory
 
+   - Run this command from within your project directory
+
 ```bash
-docker run --rm -it -p 4000:4000 -w /jekyll-app -v /path/to/local/jekyll-site:/jekyll-app etelej/jekyll bundle exec jekyll serve
+docker run --rm -it -p 4000:4000 -w /jekyll-app -v "$PWD":/jekyll-app etelej/jekyll bundle exec jekyll serve
 ```
