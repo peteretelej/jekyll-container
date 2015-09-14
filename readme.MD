@@ -28,32 +28,18 @@ docker-compose run --rm jekyll/container
 
 
 ## Usage - Advanced (working with image)
-Building a your custom image from the Dockerfile (with any prefered tag)
+Running a **container** from the image
+   - **Map** your githubpages to a volume in the localcontainer. (Note: Your Gemfile and Gemfile.lock should be included in the files). Mounting as *read-only will not work* as the webserver will require to rebuild files to the directory
+
+```bash
+docker run --rm -it -p 4000:4000 -w /jekyll-app -v /path/to/local/jekyll-site:/jekyll-app etelej/jekyll bundle exec jekyll serve
+```
+
+
+###Building a custom image from the Dockerfile
 
 ```bash
 docker build -t yourname/yourjekyll:yourtag . 
 ```
 
 Or simply pull my image (`docker pull etelej/jekyll:latest`)
-
-
-Running a **container** from the image
-   - **Map** your githubpages to a volume in the localcontainer. (Note: Your Gemfile and Gemfile.lock 
-   should be included in the files). Copying the directory instead of mapping a volume will not work
-   as the webserver will require to rebuild files to the directory.
-
-```bash
-docker run --rm -it -name mycontainer -p 4000:4000 -v /path/to/githubpages:/volume/in/container etelej/jekyll bash
-```
-
-### Manually starting the webserver
-
-1. Navigate to the volume mounted and work on project
-2. To launch the Jekyll web server on port 4000
-
-```bash
-# Change in to the mounted directory
-cd /volume/in/container
-# Run web  server
-bundle exec jekyll serve
-```
