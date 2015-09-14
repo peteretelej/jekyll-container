@@ -4,7 +4,7 @@ An optimized [jekyll]("http://jekyllrb.com") docker image for building container
 
 ## Usage - (working with image)
 
-Run this command from within your githubpages directory. 
+Run this command from within your githubpages directory. Your githubpages Gemfile should be in the directory as it is required by the bundler.
 
 ```bash
 docker run --rm -it -p 4000:4000 -v "$PWD":/app -w /app etelej/jekyll bundle exec jekyll serve
