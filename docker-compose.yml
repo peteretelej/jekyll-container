@@ -1,9 +1,7 @@
 jekyll-container:
     image: etelej/jekyll
-    volumes:
-        - /home/chief/workspaces/github.com/etelej.github.io:/code
     ports:
         - "4000:4000"
-    working_dir: /code
-    entrypoint: ["bundle", "exec"] 
-    command: ["jekyll", "serve"]
+    volumes:
+        - /home/chief/workspaces/github.com/etelej.github.io:/app
+    working_dir: /app   

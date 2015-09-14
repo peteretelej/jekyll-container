@@ -4,13 +4,13 @@ An optimized [jekyll]("http://jekyllrb.com") docker image ([etelej/jekyll](https
 
 ## Creating the Jekyll container: 
 
-Run this command from within your githubpages directory. Your githubpages **Gemfile** should be in the directory as it is required by the bundler.
+Run this command from **within your githubpages directory**: 
 
 ```bash
-docker run --rm -it -p 4000:4000 -v "$PWD":/app -w /app etelej/jekyll bundle exec jekyll serve
+docker run --rm -it -p 4000:4000 -v "$PWD":/app -w /app etelej/jekyll 
 ```
 
-This creates a disposable container (`--rm`), emulates an interactive terminal (`-it`), forwards host's port 4000 to container's port 4000 (`-p 4000:4000 `), maps working directory on host to a read-write volume in container (`-v "$PWD":/app`), sets the mapped volume as the working directory (`-w /app`), creates container from the docker [image](https://hub.docker.com/r/etelej/jekyll/) (`etelej/jekyll`) and starts the jekyll server as the main docker process (`bundle exec jekyll serve`).
+This creates a disposable container (`--rm`), emulates an interactive terminal (`-it`), forwards host's port 4000 to container's port 4000 (`-p 4000:4000 `), maps working directory on host to a read-write volume in container (`-v "$PWD":/app`), sets the mapped volume as the working directory (`-w /app`), creates container from the docker [image](https://hub.docker.com/r/etelej/jekyll/) (`etelej/jekyll:latest`) and starts the jekyll server as the main docker process (`bundle exec jekyll serve` defined in Dockerfile).
 
 
 ## Method 2: Compose Usage (using **docker-compose**) 
