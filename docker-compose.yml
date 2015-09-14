@@ -1,6 +1,9 @@
-jek1:
-    build: .
+jekyll-container:
+    image: etelej/jekyll
     volumes:
         - ../etelej.github.io:/code
     ports:
         - "4000:4000"
+    working_dir: /code
+    entrypoint: ["bundle", "exec"] 
+    command: ["jekyll", "serve"]
