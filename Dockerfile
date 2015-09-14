@@ -7,7 +7,8 @@ RUN apt-get -qq update && \
 
 RUN mkdir -p /etc/jekyll && \
 	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"' > /etc/jekyll/Gemfile && \
-	bundle install --gemfile /etc/jekyll/Gemfile --clean --quiet
+	bundle install --gemfile /etc/jekyll/Gemfile --clean --quiet && \
+	echo "Building github-pages gems. Please wait..."
 
 RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
