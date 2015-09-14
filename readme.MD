@@ -34,12 +34,3 @@ Running a **container** from the image
 ```bash
 docker run --rm -it -p 4000:4000 -w /jekyll-app -v /path/to/local/jekyll-site:/jekyll-app etelej/jekyll bundle exec jekyll serve
 ```
-
-
-###Building a custom image from the Dockerfile
-
-```bash
-docker build -t yourname/yourjekyll:yourtag . 
-```
-
-Or simply pull my image (`docker pull etelej/jekyll:latest`)
