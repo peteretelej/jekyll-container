@@ -1,16 +1,27 @@
 # Jekyll Docker Container
 
-An optimized [jekyll]("http://jekyllrb.com") docker image for building containers for managing [Github Pages]("https://pages.github.com") 
+An optimized [jekyll]("http://jekyllrb.com") docker image for building containers for managing [Github Pages]("https://pages.github.com").  
 
-## Usage - Simple (using **docker-compose**) 
+## Usage - (working with image)
 
-Edit the `docker-compose.yml` file to replace my jekyll site directory with yours:
+Run this command from within your githubpages directory. 
+
+```bash
+docker run --rm -it -p 4000:4000 -v "$PWD":/app -w /app etelej/jekyll bundle exec jekyll serve
+```
+
+This creates a disposable container (`--rm`), emulates an interactive terminal (`-it`), forwards host's port 4000 to container's port 4000 (`-p 4000:4000 `), maps working directory on host to a read-write volume in container (`-v "$PWD":/app`), sets the mapped volume as the working directory (`-w /app`), creates container from the docker image (`etelej/jekyll`) and starts the jekyll server as the main docker process (`bundle exec jekyll serve`).
+
+
+## Compose Usage (using **docker-compose**) 
+
+To use `docker-compose` via the repo's `docker-compose.yml`, edit the `docker-compose.yml` file to replace my jekyll site directory with yours (absolute path preferable):
 
 From:
 
 ```yml
 volumes:
-    - ../etelej.github.io:/code
+    - /home/chief/workspaces/github.com/etelej.github.io:/code
 ```
 
 To:
@@ -27,12 +38,3 @@ docker-compose run --rm jekyll/container
 ```
 
 
-## Usage - Advanced (working with image)
-Running a **container** from the image
-   - **Map** your githubpages to a volume in the localcontainer. (Note: Your Gemfile and Gemfile.lock should be included in the files). Mounting as *read-only will not work* as the webserver will require to rebuild files to the directory
-
-   - Run this command from within your project directory
-
-```bash
-docker run --rm -it -p 4000:4000 -w /jekyll-app -v "$PWD":/jekyll-app etelej/jekyll bundle exec jekyll serve
-```
