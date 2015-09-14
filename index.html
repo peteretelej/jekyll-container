@@ -3,34 +3,31 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <title>Jekyll Container by etelej</title>
   </head>
 
   <body>
-    <div id="container">
+    <header>
       <div class="inner">
+        <h1>Jekyll Container</h1>
+        <h2>Jekyll Docker container for Github Pages</h2>
+        <a href="https://github.com/etelej/jekyll-container" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-        <header>
-          <h1>Jekyll Container</h1>
-          <h2>Jekyll Docker container for Github Pages</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/etelej/jekyll-container/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/etelej/jekyll-container/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/etelej/jekyll-container" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
           <h1>
 <a id="jekyll-docker-container" class="anchor" href="#jekyll-docker-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jekyll Docker Container</h1>
 
@@ -39,18 +36,24 @@
 <h2>
 <a id="creating-the-jekyll-container" class="anchor" href="#creating-the-jekyll-container" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating the <a href="https://etelej.github.io/jekyll-container/">Jekyll container</a>:</h2>
 
-<p>Run this command from within your githubpages directory. Your githubpages <strong>Gemfile</strong> should be in the directory as it is required by the bundler.</p>
+<p>Simply run this command from <strong>within your githubpages directory</strong>: </p>
 
-<div class="highlight highlight-source-shell"><pre>docker run --rm -it -p 4000:4000 -v <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$PWD</span><span class="pl-pds">"</span></span>:/app -w /app etelej/jekyll bundle <span class="pl-c1">exec</span> jekyll serve</pre></div>
+<div class="highlight highlight-source-shell"><pre>docker run --rm -it -p 4000:4000 -v <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$PWD</span><span class="pl-pds">"</span></span>:/app -w /app etelej/jekyll </pre></div>
 
-<p>This creates a disposable container (<code>--rm</code>), emulates an interactive terminal (<code>-it</code>), forwards host's port 4000 to container's port 4000 (<code>-p 4000:4000</code>), maps working directory on host to a read-write volume in container (<code>-v "$PWD":/app</code>), sets the mapped volume as the working directory (<code>-w /app</code>), creates container from the docker <a href="https://hub.docker.com/r/etelej/jekyll/">image</a> (<code>etelej/jekyll</code>) and starts the jekyll server as the main docker process (<code>bundle exec jekyll serve</code>).</p>
+<h3>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>How it works:</em>
+</h3>
 
-<h2>
-<a id="method-2-compose-usage-using-docker-compose" class="anchor" href="#method-2-compose-usage-using-docker-compose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method 2: Compose Usage (using <strong>docker-compose</strong>)</h2>
+<p>This creates a disposable container (<code>--rm</code>), emulates an interactive terminal (<code>-it</code>), forwards host's port 4000 to container's port 4000 (<code>-p 4000:4000</code>), maps working directory on host to a read-write volume in container (<code>-v "$PWD":/app</code>), sets the mapped volume as the working directory (<code>-w /app</code>), creates container from the docker <a href="https://hub.docker.com/r/etelej/jekyll/">image</a> (<code>etelej/jekyll:latest</code>) and starts the jekyll server as the main docker process (<code>bundle exec jekyll serve</code> defined in Dockerfile).</p>
+
+<hr>
+
+<h4>
+<a id="method-2-compose-usage-using-docker-compose" class="anchor" href="#method-2-compose-usage-using-docker-compose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method 2: Compose Usage (using <strong>docker-compose</strong>)</h4>
 
 <p>To use <code>docker-compose</code> via the repo's <code>docker-compose.yml</code>, edit the <code>docker-compose.yml</code> file to replace my jekyll site directory with yours (absolute path preferable):</p>
 
-<p>From:</p>
+<p>Edit docker-compose.yml from:</p>
 
 <div class="highlight highlight-source-yaml"><pre><span class="pl-s"><span class="pl-ent">volumes:</span></span>
     <span class="pl-s">- <span class="pl-s">/home/chief/workspaces/github.com/etelej.github.io:/code</span></span></pre></div>
@@ -65,13 +68,23 @@
 <div class="highlight highlight-source-shell"><pre>docker-compose run --rm jekyll/container</pre></div>
         </section>
 
-        <footer>
-          Jekyll Container is maintained by <a href="https://github.com/etelej">etelej</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+        <aside id="sidebar">
+          <a href="https://github.com/etelej/jekyll-container/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/etelej/jekyll-container/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-        
+          <p class="repo-owner"><a href="https://github.com/etelej/jekyll-container"></a> is maintained by <a href="https://github.com/etelej">etelej</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
       </div>
     </div>
+
+  
   </body>
 </html>
