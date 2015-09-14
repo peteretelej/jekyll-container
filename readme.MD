@@ -1,6 +1,6 @@
 # Jekyll Docker Container
 
-An optimized [jekyll]("http://jekyllrb.com") docker image ([etelej/jekyll](https://hub.docker.com/r/etelej/jekyll/)) for building Jekyll containers. **Helpful in developing manually built Jekyll [Github Pages]("https://pages.github.com")** without the much overheading or having to install Jekyll's multiple dependencies. Serves the Github-optimized jekyll web server locally for development/testing.   
+An optimized [jekyll]("http://jekyllrb.com") docker image ([etelej/jekyll](https://hub.docker.com/r/etelej/jekyll/)) for building Jekyll containers. **Helpful in developing manually built Jekyll [Github Pages]("https://pages.github.com")** without much overhead, or having to install Jekyll's multiple dependencies. Serves the Github-optimized jekyll web server locally for development/testing.   
 
 ## Creating the [Jekyll container](https://etelej.github.io/jekyll-container/): 
 
