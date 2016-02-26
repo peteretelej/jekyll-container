@@ -6,10 +6,9 @@ RUN apt-get -qq update && \
 	gem install -q bundler
 
 RUN mkdir -p /etc/jekyll && \
-	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"' > /etc/jekyll/Gemfile && \
+	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"\ngem "rouge"' > /etc/jekyll/Gemfile && \
 	printf "\nBuilding required Ruby gems. Please wait..." && \
-	bundle install --gemfile /etc/jekyll/Gemfile --clean --quiet
-	
+	bundle install --gemfile /etc/jekyll/Gemfile --clean --quiet 
 
 RUN apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -20,5 +19,5 @@ EXPOSE 4000
 
 ENTRYPOINT ["bundle", "exec"]
 
-CMD ["jekyll", "serve"]
+CMD ["jekyll", "serve","--host=0.0.0.0"]
 
