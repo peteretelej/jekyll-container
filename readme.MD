@@ -2,7 +2,7 @@
 
 An optimized [jekyll]("http://jekyllrb.com") docker image ([etelej/jekyll](https://hub.docker.com/r/etelej/jekyll/)) for building Jekyll containers. **Helpful in developing manually built Jekyll [Github Pages]("https://pages.github.com")** without much overhead, or having to install Jekyll's multiple dependencies.
 
-## Creating the [Jekyll container](https://etelej.github.io/jekyll-container/): 
+## Creating the [Jekyll container](https://peteretelej.github.io/jekyll-container/): 
 
 Simply run this command from **within your githubpages directory**: 
 
@@ -25,7 +25,7 @@ Edit docker-compose.yml from:
 
 ```yml
 volumes:
-    - /home/chief/workspaces/github.com/etelej.github.io:/code
+    - /home/chief/workspaces/github.com/peteretelej.github.io:/code
 ```
 
 To:

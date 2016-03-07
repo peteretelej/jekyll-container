@@ -3,5 +3,5 @@ jekyll-container:
     ports:
         - "4000:4000"
     volumes:
-        - /home/chief/workspaces/github.com/etelej.github.io:/app
+        - /home/chief/workspaces/github.com/peteretelej.github.io:/app
     working_dir: /app   
