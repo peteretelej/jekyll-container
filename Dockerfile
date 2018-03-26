@@ -1,12 +1,12 @@
-FROM ruby:latest
+FROM ruby:2.3.1
 MAINTAINER Peter Etelej <peter@etelej.com>
 
 RUN apt-get -qq update && \
 	apt-get -qq install nodejs -y && \
-	gem install -q bundler
+	gem install -q bundler -v 1.12.3
 
 RUN mkdir -p /etc/jekyll && \
-	printf 'source "https://rubygems.org"\ngem "github-pages"\ngem "execjs"\ngem "rouge"' > /etc/jekyll/Gemfile && \
+	printf 'source "https://rubygems.org"\ngem "github-pages","78"\ngem "execjs","2.7.0"\ngem "rouge","1.10.1"' > /etc/jekyll/Gemfile && \
 	printf "\nBuilding required Ruby gems. Please wait..." && \
 	bundle install --gemfile /etc/jekyll/Gemfile --clean --quiet 
 
